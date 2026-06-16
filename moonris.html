@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Moonris — Visionary Art, Ancient Folklore, Spirits. Clawing the Veil.">
+  <meta property="og:title" content="Moonris">
+  <meta property="og:description" content="Clawing the Veil — visionary art, ancient folklore, spirits drawn for those empowered by Nature.">
+  <title>Moonris</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Crimson+Pro:ital,wght@0,300;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --deep:      #080b08;
+      --surface:   #101410;
+      --hover:     #161c15;
+      --cream:     #d4c9b6;
+      --muted:     #7a7065;
+      --dim:       #3d3830;
+      --gold:      #c4953a;
+      --gold-dim:  #6b4f1a;
+      --border:    rgba(212,201,182,0.09);
+      --border-h:  rgba(212,201,182,0.20);
+    }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+    body {
+      background: var(--deep);
+      color: var(--cream);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 420px;
+      padding: 56px 22px 76px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ── CRESCENT MARK ── */
+    .mark {
+      width: 72px;
+      height: 72px;
+      margin-bottom: 22px;
+    }
+
+    /* ── NAME ── */
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 30px;
+      font-weight: 400;
+      letter-spacing: 0.24em;
+      color: var(--cream);
+      text-align: center;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 9px;
+    }
+
+    .byline {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .tagline {
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 16px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.8;
+      max-width: 290px;
+      margin-bottom: 34px;
+    }
+
+    /* ── SOCIAL ICONS ── */
+    .socials {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 46px;
+    }
+
+    .soc {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: var(--muted);
+      transition: border-color .25s, color .25s, background .25s;
+    }
+
+    .soc:hover, .soc:focus {
+      border-color: var(--gold-dim);
+      color: var(--gold);
+      background: var(--hover);
+      outline: none;
+    }
+
+    .soc svg { width: 17px; height: 17px; }
+
+    /* ── SECTION DIVIDER ── */
+    .divider {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 13px;
+    }
+
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .div-label {
+      font-family: 'Cinzel', serif;
+      font-size: 8.5px;
+      letter-spacing: 0.2em;
+      color: var(--dim);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    /* ── CARDS ── */
+    .cards {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-bottom: 28px;
+    }
+
+    .card {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 13px 15px;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      text-decoration: none;
+      color: var(--cream);
+      transition: background .2s, border-color .2s, transform .15s;
+    }
+
+    .card:hover, .card:focus {
+      background: var(--hover);
+      border-color: var(--border-h);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .card.featured {
+      border-color: var(--gold-dim);
+    }
+
+    .card.featured:hover, .card.featured:focus {
+      border-color: var(--gold);
+    }
+
+    .card.soon {
+      opacity: 0.40;
+      pointer-events: none;
+      cursor: default;
+    }
+
+    .icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 7px;
+      background: rgba(255,255,255,0.035);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .card.featured .icon { background: rgba(196,149,58,0.10); }
+    .icon svg { width: 17px; height: 17px; color: var(--muted); }
+    .card.featured .icon svg { color: var(--gold); }
+
+    .card-body { flex: 1; min-width: 0; }
+
+    .card-title {
+      font-family: 'Crimson Pro', serif;
+      font-size: 15.5px;
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 1.25;
+      margin-bottom: 2px;
+    }
+
+    .card.featured .card-title { color: var(--gold); }
+
+    .card-sub {
+      font-family: 'Crimson Pro', serif;
+      font-size: 13px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--muted);
+      line-height: 1.3;
+    }
+
+    .soon-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 8px;
+      letter-spacing: 0.1em;
+      color: var(--dim);
+      text-transform: uppercase;
+      margin-left: 6px;
+    }
+
+    .arr { flex-shrink: 0; color: var(--dim); }
+    .arr svg { width: 13px; height: 13px; }
+
+    /* ── FOOTER ── */
+    .footer { margin-top: 18px; text-align: center; }
+
+    .glyph {
+      display: block;
+      font-size: 13px;
+      color: var(--gold-dim);
+      letter-spacing: 0.5em;
+      margin-bottom: 14px;
+    }
+
+    .footer-text {
+      font-family: 'Cinzel', serif;
+      font-size: 8.5px;
+      letter-spacing: 0.16em;
+      color: var(--dim);
+      text-transform: uppercase;
+      line-height: 2.2;
+    }
+
+    @media (max-width: 400px) {
+      .page { padding: 40px 18px 60px; }
+      h1 { font-size: 24px; letter-spacing: 0.18em; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .card, .soc { transition: none; }
+    }
+  </style>
+</head>
+<body>
+<main class="page">
+
+  <!-- Crescent moon mark -->
+  <svg class="mark" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Moonris crescent moon">
+    <circle cx="36" cy="36" r="24" fill="#c4953a" opacity="0.88"/>
+    <circle cx="44" cy="29" r="18.5" fill="#080b08"/>
+    <circle cx="56" cy="20" r="1.3" fill="#c4953a" opacity="0.70"/>
+    <circle cx="62" cy="30" r="0.85" fill="#c4953a" opacity="0.50"/>
+    <circle cx="52" cy="12" r="0.65" fill="#c4953a" opacity="0.40"/>
+    <circle cx="63" cy="21" r="0.45" fill="#c4953a" opacity="0.30"/>
+  </svg>
+
+  <h1>Moonris</h1>
+  <p class="tagline">Clawing the Veil — visionary art, ancient folklore,<br>spirits drawn for those empowered by Nature</p>
+
+  <!-- Socials -->
+  <nav class="socials" aria-label="Social links">
+    <!-- Instagram -->
+    <a class="soc" href="https://www.instagram.com/moonrissssss/" target="_blank" rel="noopener" aria-label="Instagram @moonrissssss">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.4" cy="6.6" r="0.8" fill="currentColor" stroke="none"/>
+      </svg>
+    </a>
+    <!-- TikTok -->
+    <a class="soc" href="https://www.tiktok.com/@moonrissssss" target="_blank" rel="noopener" aria-label="TikTok @moonrissssss">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+      </svg>
+    </a>
+  </nav>
+
+  <!-- ART & SHOP -->
+  <div class="divider" role="separator"><span class="div-label">ᛉ &nbsp; Art &amp; Shop &nbsp; ᛉ</span></div>
+  <div class="cards">
+
+    <a class="card soon" href="#" tabindex="-1" aria-disabled="true">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <polyline points="3 9 12 15 21 9"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Prints &amp; Sticker Packs <span class="soon-tag">· coming soon</span></div>
+        <div class="card-sub">Fine art prints · Sticker sheets · Digital downloads</div>
+      </div>
+      <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    </a>
+
+    <a class="card soon" href="#" tabindex="-1" aria-disabled="true">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 17l10-10 4 4-10 10H3v-4z"/>
+          <path d="M14.5 5.5l2 2M17 3l4 4-1.5 1.5"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Original Paintings <span class="soon-tag">· coming soon</span></div>
+        <div class="card-sub">Watercolor originals · One of a kind · Ceremonial pieces</div>
+      </div>
+      <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    </a>
+
+    <a class="card soon" href="#" tabindex="-1" aria-disabled="true">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 1 22 9 12 23 2 9"/>
+          <line x1="2" y1="9" x2="22" y2="9"/>
+          <line x1="12" y1="1" x2="12" y2="23"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Jewelry &amp; Sacred Objects <span class="soon-tag">· coming soon</span></div>
+        <div class="card-sub">Handmade · Wearable art · Ritual objects</div>
+      </div>
+      <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    </a>
+
+  </div>
+
+  <!-- COMMISSIONS -->
+  <div class="divider" role="separator"><span class="div-label">ᚹ &nbsp; Commissions &nbsp; ᚹ</span></div>
+  <div class="cards">
+
+    <!-- Spirit / Deity — FEATURED — mailto pre-fills a structured brief -->
+    <a class="card featured"
+       href="mailto:dorjanslogar@gmail.com?subject=Commission%20%E2%80%94%20Spirit%20%2F%20Deity%20Portrait&body=Name%3A%20%0ASpirit%20or%20Deity%20to%20portray%3A%20%0AMythology%20%2F%20tradition%3A%20%0APractice%20%2F%20ritual%20context%3A%20%0ASize%20%26%20medium%20(watercolor%2C%20digital%2C%20other)%3A%20%0ADeadline%20if%20any%3A%20%0AReference%20images%20or%20links%3A%20%0AAdditional%20notes%3A"
+       target="_blank" rel="noopener">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Custom Spirit / Deity Portrait</div>
+        <div class="card-sub">Your personal spirit, painted for ritual use</div>
+      </div>
+      <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    </a>
+
+    <a class="card"
+       href="mailto:dorjanslogar@gmail.com?subject=Commission%20%E2%80%94%20Altar%20%2F%20Ritual%20Artwork&body=Name%3A%20%0AType%20of%20piece%20(altar%20art%2C%20symbol%2C%20sacred%20scene)%3A%20%0AMythology%20%2F%20symbols%20to%20include%3A%20%0ASize%20%26%20medium%3A%20%0ADeadline%20if%20any%3A%20%0AAdditional%20notes%3A"
+       target="_blank" rel="noopener">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Altar &amp; Ritual Artwork</div>
+        <div class="card-sub">Sacred symbols · Altar pieces · Custom mythology</div>
+      </div>
+      <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    </a>
+
+    <a class="card"
+       href="mailto:dorjanslogar@gmail.com?subject=Commission%20%E2%80%94%20Illustration&body=Name%3A%20%0ACharacter%20%2F%20scene%20description%3A%20%0AStyle%20references%20(links%20or%20keywords)%3A%20%0ASize%20%26%20medium%3A%20%0ADeadline%20if%20any%3A%20%0AAdditional%20notes%3A"
+       target="_blank" rel="noopener">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+          <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+          <path d="M2 2l7.586 7.586"/>
+          <circle cx="11" cy="11" r="2"/>
+        </svg>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Illustration Commission</div>
+        <div class="card-sub">Characters · Creatures · Mythological scenes</div>
+      </div>
+      <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+    </a>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <span class="glyph">☽ &thinsp;✦&thinsp; ☾</span>
+    <p class="footer-text">Moonris</p>
+  </footer>
+
+</main>
+</body>
+</html>
